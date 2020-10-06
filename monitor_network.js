@@ -63,7 +63,7 @@ async function listMajors(auth) {
     })
     const rows = a.data.values;
     const outs = []
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < rows.length; i++) {
 
         const result = await getUrls(`${rows[i][1]}`)
         outs[i] = new Array(result)
@@ -72,7 +72,7 @@ async function listMajors(auth) {
       await sheets.spreadsheets.values.update({
         auth: auth,
         spreadsheetId: '1__iv0SfSeXe3BvlZysDTB8RO3fRW9Pjw5wxfXfZUFKs',
-        range: 'Sheet1!F1', //Change Sheet1 if your worksheet's name is something else
+        range: 'Sheet1!A1', //Change Sheet1 if your worksheet's name is something else
         valueInputOption: "USER_ENTERED",
         resource: {
           values: outs,
